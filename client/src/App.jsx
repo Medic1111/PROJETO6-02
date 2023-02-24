@@ -7,7 +7,7 @@ function App() {
 
   const fetchApi = async () => {
     await axios
-      .get("http://localhost:3002/api/v1")
+      .get("/api/v1/products")
       .then((sucesso) => {
         console.log(sucesso);
         setDataRecebida(sucesso.data.message);
