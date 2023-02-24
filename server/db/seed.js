@@ -1,30 +1,7 @@
-const mockData = [
-  {
-    title: "test one",
-    price: 123,
-    description: "testing fkeoakfoakofkaokfoaskfokasofk",
-    url: "testing",
-    stock_count: 89,
-  },
-  {
-    title: "test one",
-    price: 123,
-    description: "testing fkeoakfoakofkaokfoaskfokasofk",
-    url: "testing",
-    stock_count: 89,
-  },
-  {
-    title: "test one",
-    price: 123,
-    description: "testing fkeoakfoakofkaokfoaskfokasofk",
-    url: "testing",
-    stock_count: 89,
-  },
-];
-
 const mongoose = require("mongoose");
 require("dotenv").config();
 const { Product } = require("../models/products");
+const { mockProducts } = require("./mock-products");
 
 const connection = async () => {
   await mongoose
@@ -64,7 +41,7 @@ const clearDB = async (Product) => {
 };
 
 if (process.argv[2] === "--seedDB") {
-  seedDB(Product, mockData);
+  seedDB(Product, mockProducts);
 } else if (process.argv[2] === "--clearDB") {
-  clearDB(Product, mockData);
+  clearDB(Product);
 }

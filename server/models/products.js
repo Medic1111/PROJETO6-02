@@ -32,6 +32,14 @@ const productSchema = new mongoose.Schema({
     max: [99999999, "Max  character"],
     required: [true, "This field is required"],
   },
+  label: {
+    type: Array,
+    default: [],
+  },
+  nutritional_facts: {
+    type: Object,
+    default: {},
+  },
 });
 
 const Product = mongoose.model("Product", productSchema);
