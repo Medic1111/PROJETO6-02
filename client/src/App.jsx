@@ -1,5 +1,12 @@
+import { RoutesClient } from "./routes/Routes";
+import { GlobalStyle } from "./styles/GlobalStyles";
 function App() {
-  return <></>;
+  return (
+    <>
+      <RoutesClient />
+      <GlobalStyle />
+    </>
+  );
 }
 
 export default App;
