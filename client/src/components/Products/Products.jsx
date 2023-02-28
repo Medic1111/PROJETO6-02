@@ -39,6 +39,21 @@ const fetchApi = async () => {
                             <p>{product.title}</p>
                             <p>{product.price}</p>
                             <img src={product.url}/>
+                            <p>{product.description}</p>
+                            <p>Calorias: {product.nutritional_facts.calories}</p>
+                            <p>Carboidratos: {product.nutritional_facts.carbs}</p>
+                            <p>Proteinas: {product.nutritional_facts.protein}</p>
+                            <p>Gordura: {product.nutritional_facts.fat}</p>
+                            <li>
+                                {product.label.map((Element)=>{
+                                    console.log(Element)
+                                    return( 
+                                        <p>{Element}</p>
+                                    )
+                                
+                            
+                                })}
+                            </li>
                         </li>
                     )
                 

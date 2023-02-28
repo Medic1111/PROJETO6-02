@@ -6,8 +6,8 @@ const Header = () => {
             <nav>
                 <p>Combos</p>
                 {/* <p>Monte o seu menu</p> */}
-                {/* <p>Sobremesas</p> */}
-                {/* <p>Bebidas</p> */}
+                <p>Sobremesas</p>
+                <p>Bebidas</p>
             </nav>
     </header> 
     )
