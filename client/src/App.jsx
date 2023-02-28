@@ -1,13 +1,11 @@
-import { useState } from "react";
-import axios from "axios";
-import  Products  from "./components/Products/Products";
-
+import { RoutesClient } from "./routes/Routes";
+import { GlobalStyle } from "./styles/GlobalStyles";
 function App() {
-
   return (
-    <div className="App">
-      <Products/>
-    </div>
+    <>
+      <RoutesClient />
+      <GlobalStyle />
+    </>
   );
 }
 
