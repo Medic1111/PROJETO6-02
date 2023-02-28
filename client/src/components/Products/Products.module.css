@@ -1,0 +1,88 @@
+/* primary: "#FF0000",
+    background: "#FFFFFF",
+    textPrimary: "#424242",
+    textSecondary: "#757575", */
+
+   
+.Products {
+   width: 100vw;
+   font-family: sans-serif;
+   background: #ffff;
+   height: auto;
+   display: flex;
+   justify-content: start;
+   align-items: center;
+   flex-direction: column;
+}
+.li {
+   margin-bottom: 20%;
+   color: #474646;
+   background-color: #a77d7d;
+   background-color: transparent;
+   box-shadow:  35px 35px 70px #d8d7d7, 
+   -35px -35px 70px #ffffff;
+   border-top: #FF0000 1px solid;
+   border-radius: 8px 8px 0 0;
+   width: 90%;
+   justify-content: space-between;
+   list-style: none;
+   display: flex;
+}
+
+.div {
+   width: 65%;
+   display: flex;
+   flex-direction: column;
+   justify-content: start;
+   height: 100%;
+   align-items: start;
+}
+
+.title {
+   font-size: 3em;
+   color: #757575;
+   text-transform: uppercase;
+}
+
+.description {
+   max-width: 45%;
+}
+.props {
+   color: #757575;
+}
+
+.img {
+   width: 30%;
+   border-radius: 8px 0 0 8px;
+}
+
+.standard {
+   background-color:#a77d7d;
+}
+
+.quantidade {
+display: flex;
+justify-content: center;
+gap: 1em;
+align-self: self-end;
+margin: 0 0.5em ;
+}
+
+.button {
+   align-self: self-end;
+   background-color: #FF0000;
+   color: #ffffff ;
+   font-size: 1.2em;
+   border-radius: 8px;
+   border: transparent;
+   display: flex;
+   align-items: center;
+   padding: 0 3em;
+   justify-content: space-between;
+   height: 7.5vh;
+   width: 15em;
+   margin: 0.25em;
+
+   
+
+}
