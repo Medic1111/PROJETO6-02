@@ -1,17 +1,19 @@
+import React from "react";
 
-const Header = () => {
-    return (
-    <header>
-            <h1 className="title">PedeAiDB</h1>
-            <nav>
-                <p>Combos</p>
-                {/* <p>Monte o seu menu</p> */}
-                <p>Sobremesas</p>
-                <p>Bebidas</p>
-            </nav>
-    </header> 
-    )
-    
+//GL CODOU POR AQUI AQUI HAHA :)
+
+import { Container, Desk, Mobol } from "./styles";
+import { Mobile } from "./Mobile/Mobile";
+import { Desktop } from "./Desktop/Desktop";
+export function Header() {
+  return (
+    <Container>
+      <Desk>
+        <Desktop />
+      </Desk>
+      <Mobol>
+        <Mobile />
+      </Mobol>
+    </Container>
+  );
 }
-
-export default Header
