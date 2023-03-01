@@ -40,12 +40,14 @@ const fetchApi = async () => {
                             <img className={style.img} src={product.url}/>
                              <div className={style.div}>
                                 <p className={style.title}>{product.title}</p>
-                                <p>Preço: <span className={style.props}>{product.price}</span></p>
+                                <p className={style.price}>Preço: <span className={style.props}>{product.price}</span></p>
                                 <p className={style.description}>Descriçao: <span className={style.props}>{product.description}</span></p>
-                                <p>Calorias: <span className={style.props}>{product.nutritional_facts.calories}</span></p>
-                                <p>Carboidratos: <span className={style.props}>{product.nutritional_facts.carbs}</span></p>
-                                <p>Proteinas: <span className={style.props}>{product.nutritional_facts.protein}</span></p>
-                                <p>Gordura: <span className={style.props}>{product.nutritional_facts.fat}</span></p>
+                               <div className={style.nutritional}>
+                                    <p className={style.calories}>Calorias: <span className={style.props}>{product.nutritional_facts.calories} |</span></p>
+                                    <p className={style.carbs}> Carboidratos: <span className={style.props}>{product.nutritional_facts.carbs} |</span></p>
+                                    <p className={style.protein}> Proteinas: <span className={style.props}>{product.nutritional_facts.protein} |</span></p>
+                                    <p className={style.fat}> Gordura: <span className={style.props}>{product.nutritional_facts.fat}</span></p>
+                               </div>
                             <li>
                                {product.label[0]==="standard"?null:"Dieta: "}
                                 {product.label.map((Dieta)=>{
