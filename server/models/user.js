@@ -34,8 +34,8 @@ const userSchema = new mongoose.Schema({
     default: []
   },
   timePassword: {
-    type: Object,
-    default: {},
+    type: Date,
+    default: new Date(),
   },
   dataRegister: {
     type: Date,
@@ -43,7 +43,7 @@ const userSchema = new mongoose.Schema({
   },
   temporaryCodePassword: {
     type: String,
-    default: "não sei o que vai aqui"
+    default: new Date()
   }
 })
 
