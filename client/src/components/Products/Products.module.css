@@ -1,103 +1,139 @@
-/* primary: "#FF0000",
+   /* primary: "#FF0000",
     background: "#FFFFFF",
     textPrimary: "#424242",
     textSecondary: "#757575", */
 
+    center {
+      width: 100vw;
+      height: auto;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .grid {
+      display: -webkit-box; /* Not needed if autoprefixing */
+      display: -ms-flexbox; /* Not needed if autoprefixing */
+      display: flex;
+      margin-left: -3em; 
+      width: 100vw;
+    }
+    .gridCol {
+      padding-left: 3em;  
+      background-clip: padding-box;
+    }
+    
+    .li {
+      margin: 3em 0.75em;
+      color: #474646;
+      box-shadow: 28px 28px 56px #bababa, -10px -10px 56px #ffffff;
+      border-top: #ff0000 1px solid;
+      border-radius: 8px;
+      height: fit-content;
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      min-width: 26em;
+    }
+    
+    .div {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: start;
+      height: auto;
+      padding: 2em;
+      align-items: start;
+    }
+    
+    .title {
+      font-size: 2.5em;
+      margin-bottom: 0.5em;
+      color: #757575;
+      text-transform: uppercase;
+    }
+    
+    .fat,
+    .protein,
+    .carbs,
+    .calories,
+    .description,
+    .price {
+      font-size: 1.3em;
+      display: inline;
+      width: fit-content;
+      margin-bottom: 1em;
+    }
+    
+    .nutritional {
+      display: flex;
+      gap: 0.25em;
+    }
+    
+    .description {
+      max-width: 100%;
+    }
+    .props {
+      color: #757575;
+    }
+    
+    .img {
+      width: 100%;
+      border-radius: 8px 8px 0 0;
+      object-fit: cover;
+      max-height: 45em;
+    }
+    
+    .standard {
+      display: flex;
+      align-items: center;
+      
    
-.Products {
-   width: 100vw;
-   font-family: sans-serif;
-   background: #ffff;
-   height: auto;
-   display: flex;
-   /* align-items: start; */
-   justify-content: center;
-   flex-wrap: wrap;
-   gap: 3.3%;
-}
-.li {
-   margin-bottom: 1.8em;
-   color: #474646;
-   box-shadow: 28px 28px 56px #bababa, -10px -10px 56px #ffffff;
-   border-top: #FF0000 1px solid;
-   border-radius: 8px;
-   width: 30%;
-   min-height: 30vh;
-   height: fit-content;
-   list-style: none;
-   display: flex;
-   flex-direction: column;
-}
+    }
+    
+    .quantidade {
+      display: flex;
+      text-transform: capitalize;
+      gap: 1em;
+      align-items: center;
+      font-size: 1.8em;
+      /* align-self: self-end; */
+    }
 
-.div {
-   width: 100%;
-   display: flex;
-   flex-direction: column;
-   justify-content: start;
-   height: auto;
-   padding: 2em;
-   align-items: start;
-}
+    .flex {
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+    }
 
-.title {
-   font-size: 2.5em;
-   margin-bottom: 0.5em;
-   color: #757575;
-   text-transform: uppercase;
-}
+    .keto {
+      width: 15%;
+      
 
-.fat, .protein, .carbs, .calories, .description, .price{
-   font-size: 1.3em;
-   display: inline;
-   width: fit-content;
-   margin-bottom: 0.25em;
-}
+    }
 
-.nutritional {
-   display: flex;
-   gap: 0.25em;
-}
+    .menos {
+      font-family: sans-serif;
+      color: #757575;
+    }
 
-.description {
-   max-width: 45%;
-}
-.props {
-   color: #757575;
-}
-
-.img {
-   width: 100%;
-   border-radius: 8px 8px 0 0;
-   object-fit: cover;
-}
-
-.standard {
-   background-color:#a77d7d;
-}
-
-.quantidade {
-display: flex;
-justify-content: center;
-gap: 1em;
-align-self: self-end;
-margin: 0 0.5em ;
-}
-
-.button {
-   align-self: self-end;
-   background-color: #FF0000;
-   color: #ffffff ;
-   font-size: 1.2em;
-   border-radius: 8px;
-   border: transparent;
-   display: flex;
-   align-items: center;
-   padding: 0 3em;
-   justify-content: space-between;
-   height: 7.5vh;
-   width: 15em;
-   margin: 0.25em;
-
-   
-
-}
+    .mais {
+      color: #ff0000;
+      font-family: sans-serif;
+    }
+    
+    .button {
+      align-self: self-end;
+      background-color: #ff0000;
+      color: #ffffff;
+      font-size: 1.2em;
+      border-radius: 8px;
+      border: transparent;
+      display: flex;
+      padding: 0 0.7em;
+      align-items: center;
+      justify-content: space-between;
+      height: 5vh;
+      width: 10em;
+      max-width: 40%;
+    }
