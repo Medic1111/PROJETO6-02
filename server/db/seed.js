@@ -1,23 +1,24 @@
 const mongoose = require("mongoose");
 require("dotenv").config();
 const { Product } = require("../models/products");
-const { mockProducts } = require("./mock-products");
+const { User } = require("../models/user");
+const { mockProducts, mockUsers } = require("./mock-products");
 
 const connection = async () => {
   await mongoose
     .connect(process.env.DB_URI)
     .then(() => {
-      console.log("db pronta para popular!");
+      console.log("DB CONNECTED");
     })
     .catch((err) => {
       console.log(err);
     });
 };
 
-const seedDB = async (Product, mockData) => {
+const seedDB = async (Model, mockData) => {
   await connection();
 
-  await Product.create(mockData)
+  await Model.create(mockData)
     .then(() => {
       console.log("DB POPULADA");
     })
@@ -27,12 +28,12 @@ const seedDB = async (Product, mockData) => {
   process.exit();
 };
 
-const clearDB = async (Product) => {
+const clearDB = async (Model) => {
   await connection();
 
-  await Product.deleteMany()
+  await Model.deleteMany()
     .then(() => {
-      console.log("DB CLEARED");
+      console.log("DB LIMPA");
     })
     .catch((err) => {
       console.log(err);
@@ -40,8 +41,12 @@ const clearDB = async (Product) => {
   process.exit();
 };
 
-if (process.argv[2] === "--seedDB") {
+if (process.argv[2] === "--seedDB-product") {
   seedDB(Product, mockProducts);
-} else if (process.argv[2] === "--clearDB") {
+} else if (process.argv[2] === "--clearDB-product") {
   clearDB(Product);
+} else if (process.argv[2] === "--seedDB-user") {
+  seedDB(User, mockUsers);
+} else if (process.argv[2] === "--clearDB-user") {
+  clearDB(User);
 }
