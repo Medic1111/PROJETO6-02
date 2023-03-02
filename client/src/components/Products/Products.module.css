@@ -12,6 +12,20 @@
       align-items: center;
       flex-direction: column;
     }
+    .nav {
+      width: 100%;
+    }
+
+    .route {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 3em;
+      font-family: sans-serif;
+      font-size: 1.6em;
+      color: #757575;
+    }
+
     .grid {
       display: -webkit-box; /* Not needed if autoprefixing */
       display: -ms-flexbox; /* Not needed if autoprefixing */
@@ -19,6 +33,7 @@
       margin-left: -3em;
       width: 100vw;
     }
+
     .gridCol {
       padding-left: 3em;
       background-clip: padding-box;
@@ -34,6 +49,7 @@
       flex-direction: column;
       min-width: 26em;
     }
+
     .div {
       width: 100%;
       display: flex;
@@ -43,12 +59,14 @@
       padding: 2em;
       align-items: start;
     }
+
     .title {
       font-size: 2.5em;
       margin-bottom: 0.5em;
       color: #757575;
       text-transform: uppercase;
     }
+
     .fat,
     .protein,
     .carbs,
@@ -60,13 +78,16 @@
       width: fit-content;
       margin-bottom: 1em;
     }
+
     .nutritional {
       display: flex;
       gap: 0.25em;
     }
+
     .description {
       max-width: 100%;
     }
+
     .props {
       color: #676060;
     }
@@ -77,10 +98,12 @@
       object-fit: cover;
       max-height: 45em;
     }
+
     .standard {
       display: flex;
       align-items: center;
     }
+
     .quantidade {
       display: flex;
       text-transform: capitalize;
@@ -89,11 +112,13 @@
       font-size: 1.8em;
       font-weight: 900;
     }
+
     .flex {
       display: flex;
       width: 100%;
       justify-content: space-between;
     }
+
     .keto {
       width: 9%;
     }
