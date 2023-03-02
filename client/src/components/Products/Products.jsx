@@ -1,8 +1,8 @@
 import style from "./Products.module.css"
 import axios from "axios";
 import keto from "../../assets/keto.png"
-import paleo from "../../assets/paleo2.png"
-import vegan from "../../assets/vegan.png"
+import paleo from "../../assets/paleo4.png"
+import vegan from "../../assets/vegan3.png"
 import Masonry from 'react-masonry-css';
 import { useState,useEffect } from "react";
 
@@ -39,7 +39,15 @@ const fetchApi = async () => {
    return (
 
    <div className={style.center}> 
-    
+    <nav>
+        <ul>
+            <li>Tradicional</li>
+            <li>Vegan
+                <li>Paleo</li>
+                <li>Keto</li>
+            </li>
+        </ul>
+    </nav>
         <Masonry 
         breakpointCols={breakpointColumnsObj}
         className={style.grid}
@@ -52,8 +60,8 @@ const fetchApi = async () => {
                             <img className={style.img} src={product.url}/>
                              <div className={style.div}>
                                 <p className={style.title}>{product.title}</p>
-                                <p className={style.price}>Preço: <span className={style.props}>{product.price}</span></p>
-                                <p className={style.description}>Descriçao: <span className={style.props}>{product.description}</span></p>
+                                <p className={style.price}>Preço: </p>
+                                <p className={style.description}> <span className={style.props}>{product.description}</span></p>
                                <div className={style.nutritional}>
                                     <p className={style.calories}>Cal: <span className={style.props}>{product.nutritional_facts.calories} |</span></p>
                                     <p className={style.carbs}> Carb: <span className={style.props}>{product.nutritional_facts.carbs} |</span></p>
@@ -84,7 +92,7 @@ const fetchApi = async () => {
                             </div>
                             <div className={style.flex}>
                                 <p className={style.quantidade}><span className={style.menos}>-</span> <span>1</span> <span className={style.mais}>+</span></p>
-                                <button className={style.button}>Adicionar <span className={style.valor}>R$0</span></button>
+                                <button className={style.button}>Adicionar <span className={style.price}>R$ {product.price},00</span></button>
                             </div>
                            
                              </div>

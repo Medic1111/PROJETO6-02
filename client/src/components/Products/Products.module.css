@@ -3,31 +3,30 @@
     textPrimary: "#424242",
     textSecondary: "#757575", */
 
-    center {
-      width: 100vw;
+    .center {
+      /* width: 100vw; */
       height: auto;
       margin: 0 auto;
       display: flex;
       justify-content: center;
       align-items: center;
+      flex-direction: column;
     }
     .grid {
       display: -webkit-box; /* Not needed if autoprefixing */
       display: -ms-flexbox; /* Not needed if autoprefixing */
       display: flex;
-      margin-left: -3em; 
+      margin-left: -3em;
       width: 100vw;
     }
     .gridCol {
-      padding-left: 3em;  
+      padding-left: 3em;
       background-clip: padding-box;
     }
-    
     .li {
       margin: 3em 0.75em;
       color: #474646;
-      box-shadow: 28px 28px 56px #bababa, -10px -10px 56px #ffffff;
-      border-top: #ff0000 1px solid;
+      box-shadow: rgb(174, 156, 156) 0px 15px 30px -10px;
       border-radius: 8px;
       height: fit-content;
       list-style: none;
@@ -35,7 +34,6 @@
       flex-direction: column;
       min-width: 26em;
     }
-    
     .div {
       width: 100%;
       display: flex;
@@ -45,92 +43,90 @@
       padding: 2em;
       align-items: start;
     }
-    
     .title {
       font-size: 2.5em;
       margin-bottom: 0.5em;
       color: #757575;
       text-transform: uppercase;
     }
-    
     .fat,
     .protein,
     .carbs,
     .calories,
-    .description,
-    .price {
+    .description
+    {
       font-size: 1.3em;
       display: inline;
       width: fit-content;
       margin-bottom: 1em;
     }
-    
     .nutritional {
       display: flex;
       gap: 0.25em;
     }
-    
     .description {
       max-width: 100%;
     }
     .props {
-      color: #757575;
+      color: #676060;
     }
-    
+
     .img {
       width: 100%;
       border-radius: 8px 8px 0 0;
       object-fit: cover;
       max-height: 45em;
     }
-    
     .standard {
       display: flex;
       align-items: center;
-      
-   
     }
-    
     .quantidade {
       display: flex;
       text-transform: capitalize;
       gap: 1em;
       align-items: center;
       font-size: 1.8em;
-      /* align-self: self-end; */
+      font-weight: 900;
     }
-
     .flex {
       display: flex;
       width: 100%;
       justify-content: space-between;
     }
-
     .keto {
-      width: 15%;
-      
-
+      width: 9%;
+    }
+    
+    .price {
+      color: #ffffff;
+      text-transform: uppercase;
+      font-weight: 900;
     }
 
     .menos {
       font-family: sans-serif;
       color: #757575;
+      font-weight: 900;
     }
-
+    
     .mais {
       color: #ff0000;
       font-family: sans-serif;
+      font-weight: 900;
     }
     
     .button {
       align-self: self-end;
       background-color: #ff0000;
+      font-weight: bold;
       color: #ffffff;
       font-size: 1.2em;
       border-radius: 8px;
       border: transparent;
       display: flex;
-      padding: 0 0.7em;
+      padding: 0 0.25em;
+      /* gap: 0.25em; */
       align-items: center;
       justify-content: space-between;
       height: 5vh;
