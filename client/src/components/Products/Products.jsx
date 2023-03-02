@@ -1,13 +1,14 @@
-import Header from "../Header/Header.jsx"
 import style from "./Products.module.css"
 import axios from "axios";
+import keto from "../../assets/keto.png"
+import paleo from "../../assets/paleo2.png"
+import vegan from "../../assets/vegan.png"
+import Masonry from 'react-masonry-css';
 import { useState,useEffect } from "react";
-
 
 const Products = () => {
 const [products, setProducts] = useState([]);
 const [feedback, setFeedback] = useState(null);
-
 
 const fetchApi = async () => {
     await axios
@@ -27,12 +28,23 @@ const fetchApi = async () => {
         },
         []
       )
+      const breakpointColumnsObj = {
+        default: 4,
+        1250: 3,
+        980: 2,
+        650: 1
+      };
+      
 
    return (
 
-   <> 
-    <Header/>
-        <section className={style.Products}>
+   <div className={style.center}> 
+    
+        <Masonry 
+        breakpointCols={breakpointColumnsObj}
+        className={style.grid}
+        columnClassName={style.gridCol}>
+        
             {
                 products.map((product,index) => { 
                     return (
@@ -43,27 +55,38 @@ const fetchApi = async () => {
                                 <p className={style.price}>Preço: <span className={style.props}>{product.price}</span></p>
                                 <p className={style.description}>Descriçao: <span className={style.props}>{product.description}</span></p>
                                <div className={style.nutritional}>
-                                    <p className={style.calories}>Calorias: <span className={style.props}>{product.nutritional_facts.calories} |</span></p>
-                                    <p className={style.carbs}> Carboidratos: <span className={style.props}>{product.nutritional_facts.carbs} |</span></p>
-                                    <p className={style.protein}> Proteinas: <span className={style.props}>{product.nutritional_facts.protein} |</span></p>
-                                    <p className={style.fat}> Gordura: <span className={style.props}>{product.nutritional_facts.fat}</span></p>
+                                    <p className={style.calories}>Cal: <span className={style.props}>{product.nutritional_facts.calories} |</span></p>
+                                    <p className={style.carbs}> Carb: <span className={style.props}>{product.nutritional_facts.carbs} |</span></p>
+                                    <p className={style.protein}> Prot: <span className={style.props}>{product.nutritional_facts.protein} |</span></p>
+                                    <p className={style.fat}> Gord: <span className={style.props}>{product.nutritional_facts.fat}</span></p>
                                </div>
-                            <li>
-                               {product.label[0]==="standard"?null:"Dieta: "}
+                            <div className={style.standard}>
                                 {product.label.map((Dieta)=>{
+                                    let img;
+                                    if (Dieta==="paleo"){
+                                        img=paleo
+                                    } 
+                                    else if (Dieta==="keto"){
+                                        img=keto
+                                    }
+                                    else if (Dieta==="vegan"){
+                                        img=vegan
+                                    }
                                     return( 
                                         <>
                                         {Dieta==="standard"?null:
-                                        <span className={style.standard}>{Dieta} </span>}
+                                            <img src={img} className={style.keto}/> 
+                                        }
                                         </>
-                                        
+                                         
                                     )
-                                
-                            
                                 })}
-                            </li>
-                            <p className={style.quantidade}><span>+</span> <span>1</span> <span>-</span></p>
-                            <button className={style.button}>Adicionar <span>R$0</span></button>
+                            </div>
+                            <div className={style.flex}>
+                                <p className={style.quantidade}><span className={style.menos}>-</span> <span>1</span> <span className={style.mais}>+</span></p>
+                                <button className={style.button}>Adicionar <span className={style.valor}>R$0</span></button>
+                            </div>
+                           
                              </div>
                             
                             
@@ -73,8 +96,8 @@ const fetchApi = async () => {
                 })  
 
             }
-        </section>
-</> 
+        </Masonry>
+</div> 
    
    )
 }
