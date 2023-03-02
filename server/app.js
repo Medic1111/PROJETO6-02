@@ -19,8 +19,12 @@ app.get("/api/v1", (req, res) => {
 });
 
 app.get("/api/v1/products", async (req, res) => {
-  const allProducts = await Product.find({});
+  if(req.query && req.query.label) {
+    const allProducts = await Product.find(req.query);
+    return res.status(200).json({ products: allProducts });
+  }
   res.status(200).json({ products: allProducts });
+  
 });
 
 app.get("*", (req, res) => {
