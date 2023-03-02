@@ -6,6 +6,7 @@ const userSchema = new mongoose.Schema({
     minLength: [5, "Minimun 5 character"],
     maxLength: [15, "Max character allowed is 15"],
     required: [true, "This field is required"],
+    unique: [true, "username already registered"],
     trim: true,
   },
   password: {
@@ -21,32 +22,35 @@ const userSchema = new mongoose.Schema({
     maxLength: [99, "Max character allowed is 99"],
     required: [true, "This field is required"],
     trim: true,
+    unique: [true, "email already registered"],
   },
-  phoneNumber: {
+  phone_number: {
     type: Number,
     minLength: [9, "Minimun 9 character"],
     maxLength: [12, "Max character allowed is 12"],
     required: [true, "This field is required"],
+    unique: [true, "Phone number already registered"],
+
     trim: true,
   },
   carrinho: {
     type: Array,
-    default: []
+    default: [],
   },
-  timePassword: {
+  time_password: {
     type: Date,
     default: new Date(),
   },
-  dataRegister: {
+  data_register: {
     type: Date,
     default: new Date(),
   },
-  temporaryCodePassword: {
+  temporary_code_password: {
     type: String,
-    default: new Date()
-  }
-})
+    default: new Date(),
+  },
+});
 
-const User = mongoose.model("Product", userSchema);
+const User = mongoose.model("User", userSchema);
 
 module.exports = { User };
