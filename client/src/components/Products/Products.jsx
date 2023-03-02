@@ -39,13 +39,13 @@ const fetchApi = async () => {
    return (
 
    <div className={style.center}> 
-    <nav>
-        <ul>
+    <nav className={style.nav}>
+        <ul className={style.route}>
+            <li>Início</li>
             <li>Tradicional</li>
-            <li>Vegan
-                <li>Paleo</li>
-                <li>Keto</li>
-            </li>
+            <li>Vegan</li>
+            <li>Paleo</li>
+            <li>Keto</li>
         </ul>
     </nav>
         <Masonry 
