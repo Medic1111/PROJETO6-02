@@ -6,7 +6,7 @@
   "scripts": {
     "dev-server": "nodemon server/index.js",
     "dev-client": "cd client && npm run dev",
-    "build": "cd client && npm install && npm start",
+    "build": "cd client && npm install && npm run build",
     "seedDB": "nodemon server/db/seed.js --seedDB",
     "clearDB": "nodemon server/db/seed.js --clearDB"
   },

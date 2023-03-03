@@ -2,7 +2,8 @@ const mongoose = require("mongoose");
 require("dotenv").config();
 const { Product } = require("../models/products");
 const { User } = require("../models/user");
-const { mockProducts, mockUsers } = require("./mock-products");
+const { mockProducts } = require("./mock-products");
+const { mockUsers } = require("./mock-users");
 
 const connection = async () => {
   await mongoose
