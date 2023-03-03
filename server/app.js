@@ -28,7 +28,7 @@ app.get("/api/v1/products", async (req, res) => {
 
 });
 
-app.post("/api/v1/users", async (req, res) => {
+app.post("/api/v1/auth/login", async (req, res) => {
   const { username, password } = req.body
   const user = await User.findOne({ username: username })
 
@@ -50,12 +50,12 @@ app.post("/api/v1/auth/register", async (req, res) => {
   if (userExiste) {
     return res
       .status(409)
-      .json({ message: "USERNAME JAH REGISTRADO, ESCOLHA OUTRO" });
+      .json({ message: "USERNAME JA REGISTRADO, ESCOLHA OUTRO" });
   }
 
   const user = await User.create(req.body)
 
-  res.status(200).json(user);
+  res.status(201).json(user);
 });
 
 app.get("*", (req, res) => {
