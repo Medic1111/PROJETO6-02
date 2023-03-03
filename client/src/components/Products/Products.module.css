@@ -16,6 +16,17 @@
       width: 100%;
     }
 
+    .filtro {
+      cursor: pointer;
+
+    }
+
+    .filtro:hover {
+      color: #ff0000; 
+      transition: 0.25s;
+    
+    }
+
     .route {
       display: flex;
       align-items: center;
@@ -48,7 +59,11 @@
       display: flex;
       flex-direction: column;
       min-width: 26em;
+      /* Teste */
+      height: 50vh;
+      position: relative;
     }
+    
 
     .div {
       width: 100%;
@@ -97,6 +112,9 @@
       border-radius: 8px 8px 0 0;
       object-fit: cover;
       max-height: 45em;
+      /* Teste */
+      max-height: unset;
+      height: 15vh;
     }
 
     .standard {
@@ -117,6 +135,10 @@
       display: flex;
       width: 100%;
       justify-content: space-between;
+      position: absolute;
+      bottom: 0px;
+      left: 0;
+      padding: 1em 1.95em;
     }
 
     .keto {
@@ -156,5 +178,40 @@
       justify-content: space-between;
       height: 5vh;
       width: 10em;
-      max-width: 40%;
+      max-width: 45%;
+    }
+
+
+    /* Responsivo */
+
+    @media(max-width: 1280px){
+      .li {
+        height: fit-content;    
+      }
+      
+      .img {
+        max-height: 45em;
+        height: unset;
+      }
+
+      .flex {
+        position: unset;
+        bottom: unset;
+        left: unset;
+        padding: unset;
+      }
+
+    }
+
+    @media(max-width: 1000px){
+      .img {
+        max-height: 60em;
+      }
+    }
+
+    @media(max-width: 620px){
+      .img {
+        height: 18.5em ;
+      }
+      
     }
