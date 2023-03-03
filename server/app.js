@@ -24,20 +24,20 @@ app.get("/api/v1/products", async (req, res) => {
     const allProducts = await Product.find(req.query);
     return res.status(200).json({ products: allProducts });
   }
+  const allProducts = await Product.find();
   res.status(200).json({ products: allProducts });
-
 });
 
 app.post("/api/v1/auth/login", async (req, res) => {
-  const { username, password } = req.body
-  const user = await User.findOne({ username: username })
+  const { username, password } = req.body;
+  const user = await User.findOne({ username: username });
 
   if (user === null) {
     return res.status(404).json({ message: "Usuario não existe" });
   }
 
   if (user.password !== password) {
-    return res.status(401).json({ message: "senha incorreta" })
+    return res.status(401).json({ message: "senha incorreta" });
   }
 
   res.status(200).json({ user });
@@ -53,7 +53,7 @@ app.post("/api/v1/auth/register", async (req, res) => {
       .json({ message: "USERNAME JA REGISTRADO, ESCOLHA OUTRO" });
   }
 
-  const user = await User.create(req.body)
+  const user = await User.create(req.body);
 
   res.status(201).json(user);
 });

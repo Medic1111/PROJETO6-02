@@ -30,7 +30,6 @@ const userSchema = new mongoose.Schema({
     maxLength: [12, "Max character allowed is 12"],
     required: [true, "This field is required"],
     unique: [true, "Phone number already registered"],
-
     trim: true,
   },
   carrinho: {
@@ -39,15 +38,15 @@ const userSchema = new mongoose.Schema({
   },
   time_password: {
     type: Date,
-    default: new Date(),
+    default: Date.now(),
   },
   data_register: {
     type: Date,
-    default: new Date(),
+    default: Date.now(),
   },
   temporary_code_password: {
     type: String,
-    default: new Date(),
+    default: Date.now(),
   },
 });
 
