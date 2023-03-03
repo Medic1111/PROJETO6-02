@@ -1,24 +1,17 @@
 import style from "./Products.module.css"
 import axios from "axios";
-import keto from "../../assets/keto.png"
-import paleo from "../../assets/paleo4.png"
-import vegan from "../../assets/vegan3.png"
 import Masonry from 'react-masonry-css';
+import {Nav} from "../ProductsComps/Nav/Nav";
+import {breakpointColumnsObj} from "../ProductsComps/Utils/Utils"
+import {escolherDieta} from "../ProductsComps/Utils/Utils"
 import { useState,useEffect } from "react";
+import { Quantidade } from "../ProductsComps/Quantidade/Quantidade";
 
 const Products = () => {
 const [products, setProducts] = useState([]);
-const [contador, setContador] = useState(1);
-const [preco, setPreco] = useState(price)
 const [feedback, setFeedback] = useState(null);
 
- const subirValor = () => {
-	setContador(valorAntigo => valorAntigo+1)
- }
- const diminuirValor = () => {
-	setContador(valorAntigo => valorAntigo-1)
-
- }
+ 
 const fetchApi = async () => {
 	await axios
 		  .get("/api/v1/products")
@@ -37,26 +30,13 @@ const fetchApi = async () => {
 		},
 		[]
 	  )
-	  const breakpointColumnsObj = {
-		default: 4,
-		1280: 3,
-		1000: 2,
-		620: 1
-	  };
+	  
 	  
 
    return (
 
    <div className={style.center}> 
-	<nav className={style.nav}>
-		<ul className={style.route}>
-			<li className={style.filtro}>Início</li>
-			<li className={style.filtro}>Tradicional</li>
-			<li className={style.filtro}>Vegan</li>
-			<li className={style.filtro}>Paleo</li>
-			<li className={style.filtro}>Keto</li>
-		</ul>
-	</nav>
+	  <Nav />
 		<Masonry 
 		breakpointCols={breakpointColumnsObj}
 		className={style.grid}
@@ -79,16 +59,7 @@ const fetchApi = async () => {
 			</div>
 			<div className={style.standard}>
 				{product.label.map((Dieta)=>{
-				let img;
-					if (Dieta==="paleo"){
-					img=paleo
-					} 
-					else if (Dieta==="keto"){
-					img=keto
-					}
-					else if (Dieta==="vegan"){
-					img=vegan
-					}
+				let img = escolherDieta(Dieta)
 					return( 
 					<>
 					{Dieta==="standard"?null:
@@ -98,14 +69,8 @@ const fetchApi = async () => {
 					)
 					})}
 				</div>
-				<div className={style.flex}>
-					<p className={style.quantidade}><span className={style.menos} onClick={() => diminuirValor(product.price)}>-</span> <span>{contador}</span> <span className={style.mais} onClick={subirValor}>+</span></p>
-					<button className={style.button}>Adicionar <span className={style.price}onClick={() => diminuirValor(product.price) }>R$ {product.price.preco},00</span></button>
-				</div>
-						   
-			</div>
-							
-							
+			<Quantidade product={product}/>   
+			</div>		
 			</li>
 			)
 				
@@ -114,7 +79,6 @@ const fetchApi = async () => {
 			}
 		</Masonry>
 </div> 
-   
    )
 }
 
