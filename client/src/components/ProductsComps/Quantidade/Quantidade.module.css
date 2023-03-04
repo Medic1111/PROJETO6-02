@@ -1,0 +1,66 @@
+.flex {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    position: absolute;
+    bottom: 0px;
+    left: 0;
+    padding: 1em 1.95em;
+  }
+
+  .price {
+    color: #ffffff;
+    text-transform: uppercase;
+    font-weight: 900;
+  }
+
+  .menos {
+    font-family: sans-serif;
+    color: #757575;
+    font-weight: 900;
+  }
+  
+  .mais {
+    color: #ff0000;
+    font-family: sans-serif;
+    font-weight: 900;
+  }
+  
+  .quantidade {
+    display: flex;
+    text-transform: capitalize;
+    gap: 1em;
+    align-items: center;
+    font-size: 1.8em;
+    font-weight: 900;
+  }
+  
+  .button {
+    align-self: self-end;
+    background-color: #ff0000;
+    font-weight: bold;
+    color: #ffffff;
+    font-size: 1.2em;
+    border-radius: 8px;
+    border: transparent;
+    display: flex;
+    padding: 0 0.25em;
+    /* gap: 0.25em; */
+    align-items: center;
+    justify-content: space-between;
+    height: 5vh;
+    width: 10em;
+    max-width: 45%;
+  }
+
+/* Responsivo */
+
+@media(max-width: 1280px){
+    .flex {
+      position: unset;
+      bottom: unset;
+      left: unset;
+      padding: unset;
+    }
+
+  }

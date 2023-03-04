@@ -1,0 +1,142 @@
+   /* primary: "#FF0000",
+    background: "#FFFFFF",
+    textPrimary: "#424242",
+    textSecondary: "#757575", */
+
+    .center {
+      /* width: 100vw; */
+      height: auto;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+  
+    .grid {
+      display: -webkit-box; /* Not needed if autoprefixing */
+      display: -ms-flexbox; /* Not needed if autoprefixing */
+      display: flex;
+      margin-left: -3em;
+      width: 100vw;
+    }
+
+    .gridCol {
+      padding-left: 3em;
+      background-clip: padding-box;
+    }
+    .li {
+      margin: 3em 0.75em;
+      color: #474646;
+      box-shadow: rgb(174, 156, 156) 0px 15px 30px -10px;
+      border-radius: 8px;
+      height: fit-content;
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      min-width: 26em;
+      /* Teste */
+      height: 50vh;
+      position: relative;
+    }
+    
+
+    .div {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: start;
+      height: auto;
+      padding: 2em;
+      align-items: start;
+    }
+
+    .title {
+      font-size: 2.5em;
+      margin-bottom: 0.5em;
+      color: #757575;
+      text-transform: uppercase;
+    }
+
+    .fat,
+    .protein,
+    .carbs,
+    .calories,
+    .description
+    {
+      font-size: 1.3em;
+      display: inline;
+      width: fit-content;
+      margin-bottom: 1em;
+    }
+
+    .nutritional {
+      display: flex;
+      gap: 0.25em;
+    }
+
+    .description {
+      max-width: 100%;
+    }
+
+    .props {
+      color: #676060;
+    }
+
+    .img {
+      width: 100%;
+      border-radius: 8px 8px 0 0;
+      object-fit: cover;
+      max-height: 45em;
+      /* Teste */
+      max-height: unset;
+      height: 15vh;
+    }
+
+    .standard {
+      display: flex;
+      align-items: center;
+    }
+
+    
+
+    
+
+    .keto {
+      width: 9%;
+    }
+    
+    
+    /* Responsivo */
+
+    @media(max-width: 1280px){
+      .li {
+        height: fit-content;    
+      }
+      
+      .img {
+        max-height: 45em;
+        height: unset;
+      }
+
+      .flex {
+        position: unset;
+        bottom: unset;
+        left: unset;
+        padding: unset;
+      }
+
+    }
+
+    @media(max-width: 1000px){
+      .img {
+        max-height: 60em;
+      }
+    }
+
+    @media(max-width: 620px){
+      .img {
+        height: 18.5em ;
+      }
+      
+    }

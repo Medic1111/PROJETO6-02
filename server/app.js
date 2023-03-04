@@ -2,6 +2,8 @@ const express = require("express");
 const morgan = require("morgan");
 const cors = require("cors");
 const path = require("path");
+const { Product } = require("./models/products");
+const { User } = require("./models/user");
 require("dotenv").config();
 
 const app = express();
@@ -15,6 +17,45 @@ app.use(express.static(path.resolve(__dirname, "../client/dist")));
 
 app.get("/api/v1", (req, res) => {
   res.status(500).json({ message: "SENHA INCORRETA" });
+});
+
+app.get("/api/v1/products", async (req, res) => {
+  if (req.query && req.query.label) {
+    const allProducts = await Product.find(req.query);
+    return res.status(200).json({ products: allProducts });
+  }
+  const allProducts = await Product.find();
+  res.status(200).json({ products: allProducts });
+});
+
+app.post("/api/v1/auth/login", async (req, res) => {
+  const { username, password } = req.body;
+  const user = await User.findOne({ username: username });
+
+  if (user === null) {
+    return res.status(404).json({ message: "Usuario não existe" });
+  }
+
+  if (user.password !== password) {
+    return res.status(401).json({ message: "senha incorreta" });
+  }
+
+  res.status(200).json({ user });
+});
+
+app.post("/api/v1/auth/register", async (req, res) => {
+  const { username, password, email, phone_number } = req.body;
+  const userExiste = await User.findOne({ username: username });
+
+  if (userExiste) {
+    return res
+      .status(409)
+      .json({ message: "USERNAME JA REGISTRADO, ESCOLHA OUTRO" });
+  }
+
+  const user = await User.create(req.body);
+
+  res.status(201).json(user);
 });
 
 app.get("*", (req, res) => {
