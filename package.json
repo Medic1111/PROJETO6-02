@@ -8,7 +8,8 @@
     "dev-client": "cd client && npm run dev",
     "build": "cd client && npm install && npm run build",
     "seedDB": "nodemon server/db/seed.js --seedDB",
-    "clearDB": "nodemon server/db/seed.js --clearDB"
+    "clearDB": "nodemon server/db/seed.js --clearDB",
+    "start": "node server/index.js"
   },
   "author": "Aryse <medictansy@gmail.com>",
   "license": "MIT",
