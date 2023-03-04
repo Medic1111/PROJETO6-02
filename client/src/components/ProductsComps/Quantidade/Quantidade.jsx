@@ -16,18 +16,23 @@ export const Quantidade = ({product}) => {
         if(contador >0) {
             setContador(valorAntigo => valorAntigo-1)
             setPreco(valorAntigo => valorAntigo-product.price)
-        }
-        
+        } 
     
      }
+
+    const resetValor = () => {
+        setContador(0)
+        setPreco(product.price)
+
+    } 
     return (
         <div className={style.flex}>
 			<p className={style.quantidade}>
                 <span className={style.menos} onClick={() => diminuirValor(product.price)}>-</span> 
                 <span>{contador}</span> <span className={style.mais} onClick={subirValor}>+</span>
             </p>
-			<button className={style.button}>Adicionar 
-                <span className={style.price} onClick={() => diminuirValor(product.price)}> R$ {preco},00</span>
+			<button onClick={resetValor} className={style.button}>Adicionar 
+            <span className={style.price}> R$ {preco},00</span>
             </button>
 		</div>
     )

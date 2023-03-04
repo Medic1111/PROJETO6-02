@@ -22,3 +22,17 @@
     font-size: 1.6em;
     color: #757575;
   }
+
+
+  @media(max-width: 620px){
+    /* .nav {
+      gap: 0.75em;
+      width: unset;
+
+    } */
+
+    .route {
+      gap: 1em;
+    }
+    
+  }
