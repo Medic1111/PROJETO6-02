@@ -4,6 +4,7 @@ const cors = require("cors");
 const path = require("path");
 const { Product } = require("./models/products");
 const { User } = require("./models/user");
+const bcrypt = require("bcrypt");
 require("dotenv").config();
 
 const app = express();
@@ -30,31 +31,26 @@ app.get("/api/v1/products", async (req, res) => {
 
 app.post("/api/v1/auth/login", async (req, res) => {
   const { username, password } = req.body;
-  const user = await User.findOne({ username: username });
+  const user = await User.findOne({ username: username }).select("+password");
 
-  if (user === null) {
+  if (!user) {
     return res.status(404).json({ message: "Usuario não existe" });
   }
 
-  if (user.password !== password) {
+  const decrypt = await bcrypt.compare(password, user.password)
+
+  if (!decrypt) {
     return res.status(401).json({ message: "senha incorreta" });
   }
+  user.password = "e agora?"
 
   res.status(200).json({ user });
 });
 
 app.post("/api/v1/auth/register", async (req, res) => {
-  const { username, password, email, phone_number } = req.body;
-  const userExiste = await User.findOne({ username: username });
-
-  if (userExiste) {
-    return res
-      .status(409)
-      .json({ message: "USERNAME JA REGISTRADO, ESCOLHA OUTRO" });
-  }
-
-  const user = await User.create(req.body);
-
+  const {password} = req.body;
+  const hash = await bcrypt.hash(password, 12)
+  const user = await User.create({...req.body, password: hash});
   res.status(201).json(user);
 });
 
