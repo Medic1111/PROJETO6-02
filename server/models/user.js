@@ -12,9 +12,10 @@ const userSchema = new mongoose.Schema({
   password: {
     type: String,
     minLength: [8, "Minimun 8 character"],
-    maxLength: [15, "Max character allowed is 15"],
+    maxLength: [199, "Max character allowed is 15"],
     required: [true, "This field is required"],
     trim: true,
+    select: false
   },
   email: {
     type: String,
@@ -39,14 +40,17 @@ const userSchema = new mongoose.Schema({
   time_password: {
     type: Date,
     default: Date.now(),
+    select: false
   },
   data_register: {
     type: Date,
     default: Date.now(),
+    select: false
   },
   temporary_code_password: {
     type: String,
     default: Date.now(),
+    select: false
   },
 });
 
