@@ -9,12 +9,13 @@ import { Quantidade } from "../ProductsComps/Quantidade/Quantidade";
 
 const Products = () => {
 const [products, setProducts] = useState([]);
+const [url, setUrl] = useState("/api/v1/products")
 const [feedback, setFeedback] = useState(null);
 
  
 const fetchApi = async () => {
 	await axios
-		  .get("/api/v1/products")
+		  .get(url)
 		  .then((sucesso) => {
 			console.log(sucesso);
 			setProducts(sucesso.data.products);
@@ -28,7 +29,7 @@ const fetchApi = async () => {
 		() => {
 			fetchApi()
 		},
-		[]
+		[url]
 	  )
 	  
 	  
@@ -36,7 +37,7 @@ const fetchApi = async () => {
    return (
 
    <div className={style.center}> 
-	  <Nav />
+	  <Nav setUrl={setUrl} />
 		<Masonry 
 		breakpointCols={breakpointColumnsObj}
 		className={style.grid}
