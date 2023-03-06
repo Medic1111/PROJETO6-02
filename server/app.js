@@ -47,6 +47,21 @@ app.post("/api/v1/auth/login", async (req, res) => {
   res.status(200).json({ user });
 });
 
+app.delete("/api/v1/auth/delete", async (req, res) => {
+  const {password, password_confirm, username} = req.body 
+  const user = await User.findOne({ password: password })
+
+  if(password !== password_confirm) {
+    return res.status(401).json({ message: "senhas não são iguais"})
+  }
+
+  const decrypt = await bcrypt.compare(password, user.password)
+
+  if(decrypt !== user.password) {
+    return res.status(401).json({ message: "senha incorreta"}) 
+  }
+})
+
 app.post("/api/v1/auth/register", async (req, res) => {
   const {password} = req.body;
   const hash = await bcrypt.hash(password, 12)
