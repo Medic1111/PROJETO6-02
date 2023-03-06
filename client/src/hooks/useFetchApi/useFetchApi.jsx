@@ -1,4 +1,9 @@
-export const useFetchApi = () => {
+import { useState } from "react";
+import { useEffect } from "react";
+import axios from "axios";
+
+
+export const useFetchApi = (url) => {
 const [products, setProducts] = useState([]);
 const [feedback, setFeedback] = useState(null);
 
@@ -21,5 +26,6 @@ const fetchApi = async () => {
 		},
 		[url]
 	  )
+      return products
 
 }

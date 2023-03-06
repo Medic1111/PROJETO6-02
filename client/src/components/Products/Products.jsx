@@ -1,16 +1,15 @@
 import style from "./Products.module.css"
-import axios from "axios";
 import Masonry from 'react-masonry-css';
 import {Nav} from "../ProductsComps/Nav/Nav";
 import {breakpointColumnsObj} from "../ProductsComps/Utils/Utils"
 import {escolherDieta} from "../ProductsComps/Utils/Utils"
-import { useState,useEffect } from "react";
+import { useState } from "react";
 import { Quantidade } from "../ProductsComps/Quantidade/Quantidade";
+import { useFetchApi } from "../../hooks/useFetchApi/useFetchApi";
 
 const Products = () => {
 const [url, setUrl] = useState("/api/v1/products")
-
-	  
+const products = useFetchApi(url)
 	  
 
    return (
