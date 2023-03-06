@@ -1,37 +1,15 @@
 import style from "./Products.module.css"
-import axios from "axios";
 import Masonry from 'react-masonry-css';
 import {Nav} from "../ProductsComps/Nav/Nav";
 import {breakpointColumnsObj} from "../ProductsComps/Utils/Utils"
 import {escolherDieta} from "../ProductsComps/Utils/Utils"
-import { useState,useEffect } from "react";
+import { useState } from "react";
 import { Quantidade } from "../ProductsComps/Quantidade/Quantidade";
+import { useFetchApi } from "../../hooks/useFetchApi/useFetchApi";
 
 const Products = () => {
-const [products, setProducts] = useState([]);
 const [url, setUrl] = useState("/api/v1/products")
-const [feedback, setFeedback] = useState(null);
-
- 
-const fetchApi = async () => {
-	await axios
-		  .get(url)
-		  .then((sucesso) => {
-			console.log(sucesso);
-			setProducts(sucesso.data.products);
-		  })
-		  .catch((error) => {
-			console.log(error);
-			setFeedback(error.response.data.message);
-		  });
-	  };
-	  useEffect (
-		() => {
-			fetchApi()
-		},
-		[url]
-	  )
-	  
+const products = useFetchApi(url)
 	  
 
    return (
