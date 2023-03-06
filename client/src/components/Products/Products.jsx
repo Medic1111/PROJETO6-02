@@ -8,29 +8,8 @@ import { useState,useEffect } from "react";
 import { Quantidade } from "../ProductsComps/Quantidade/Quantidade";
 
 const Products = () => {
-const [products, setProducts] = useState([]);
 const [url, setUrl] = useState("/api/v1/products")
-const [feedback, setFeedback] = useState(null);
 
- 
-const fetchApi = async () => {
-	await axios
-		  .get(url)
-		  .then((sucesso) => {
-			console.log(sucesso);
-			setProducts(sucesso.data.products);
-		  })
-		  .catch((error) => {
-			console.log(error);
-			setFeedback(error.response.data.message);
-		  });
-	  };
-	  useEffect (
-		() => {
-			fetchApi()
-		},
-		[url]
-	  )
 	  
 	  
 
