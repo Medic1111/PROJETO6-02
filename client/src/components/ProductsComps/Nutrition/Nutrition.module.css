@@ -1,0 +1,19 @@
+    .fat,
+    .protein,
+    .carbs,
+    .calories
+    {
+      font-size: 1.3em;
+      display: inline;
+      width: fit-content;
+      margin-bottom: 1em;
+    }
+
+    .nutritional {
+      display: flex;
+      gap: 0.25em;
+    }
+
+    .props {
+        color: #676060;
+      }

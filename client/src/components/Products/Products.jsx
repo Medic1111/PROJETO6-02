@@ -1,64 +1,22 @@
 import style from "./Products.module.css"
-import Masonry from 'react-masonry-css';
-import {Nav} from "../ProductsComps/Nav/Nav";
-import {breakpointColumnsObj} from "../ProductsComps/Utils/Utils"
-import {escolherDieta} from "../ProductsComps/Utils/Utils"
-import { useState } from "react";
-import { Quantidade } from "../ProductsComps/Quantidade/Quantidade";
 import { useFetchApi } from "../../hooks/useFetchApi/useFetchApi";
+import { Nav } from "../ProductsComps/Nav/Nav";
+import { useState } from "react";
+import { ProductsList } from "../ProductsComps/ProductsList/ProductList";
 
-const Products = () => {
+
+export const Products = () => {
+
 const [url, setUrl] = useState("/api/v1/products")
-const products = useFetchApi(url)
-	  
 
+const products = useFetchApi(url)
    return (
 
    <div className={style.center}> 
 	  <Nav setUrl={setUrl} />
-		<Masonry 
-		breakpointCols={breakpointColumnsObj}
-		className={style.grid}
-		columnClassName={style.gridCol}>
+	  <ProductsList products={products} />
 		
-			{
-	products.map((product,index) => { 
-		return (
-			<li className={style.li} id={product._id} key={index}>
-			<img className={style.img} src={product.url}/>
-			<div className={style.div}>
-				<p className={style.title}>{product.title}</p>
-				<p className={style.price}></p>
-				<p className={style.description}> <span className={style.props}>{product.description}</span></p>
-			<div className={style.nutritional}>
-				<p className={style.calories}>Cal: <span className={style.props}>{product.nutritional_facts.calories} |</span></p>
-				<p className={style.carbs}> Carb: <span className={style.props}>{product.nutritional_facts.carbs} |</span></p>
-				<p className={style.protein}> Prot: <span className={style.props}>{product.nutritional_facts.protein} |</span></p>
-				<p className={style.fat}> Gord: <span className={style.props}>{product.nutritional_facts.fat}</span></p>
-			</div>
-			<div className={style.standard}>
-				{product.label.map((Dieta)=>{
-				let img = escolherDieta(Dieta)
-					return( 
-					<>
-					{Dieta==="standard"?null:
-					<img src={img} className={style.keto}/> 
-					}
-					</>					 
-					)
-					})}
-				</div>
-			<Quantidade product={product}/>   
-			</div>		
-			</li>
-			)
-				
-			})  
-
-			}
-		</Masonry>
 </div> 
    )
 }
 
-export default Products
