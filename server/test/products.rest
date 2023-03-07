@@ -17,8 +17,8 @@ Content-Type: application/json
 
 {
   "username": "seedUser11",
-  "password": "1234567892936",
-  "password_confirm": "1234567892936"
+  "password": "1234567892937",
+  "password_confirm": "1234567892937"
 }
 
 ###
