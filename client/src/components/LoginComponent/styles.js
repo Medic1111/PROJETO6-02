@@ -27,10 +27,18 @@ export const Form = styled.form`
   padding-top: 80px;
   gap: 12px;
   box-shadow: 28px 28px 56px #bababa, -28px -28px 56px #ffffff;
+
   & div {
     display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
     width: 100%;
+
+    & p {
+      font-size: 13px;
+      margin-top: 5px;
+    }
   }
   & h6 {
     font-size: 16px;
@@ -58,6 +66,15 @@ export const Input = styled.input`
   padding: 8px 10px;
   border-radius: 8px;
   font-weight: bold;
+  &.error {
+    &::placeholder {
+      color: white;
+    }
+    & {
+      color: white;
+      background-color: red;
+    }
+  }
 `;
 
 export const InputSubmit = styled(Input)`
