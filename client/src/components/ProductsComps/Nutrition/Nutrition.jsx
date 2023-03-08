@@ -6,17 +6,19 @@ export const Nutrition = ({ product }) => {
       <p className={style.calories}>
         Cal:
         <span className={style.props}>
-          {product.nutritional_facts.calories} |
+           {product.nutritional_facts.calories} |
         </span>
       </p>
       <p className={style.carbs}>
         Carb:
-        <span className={style.props}>{product.nutritional_facts.carbs} |</span>
+         <span className={style.props}>
+           {product.nutritional_facts.carbs} |
+        </span>
       </p>
       <p className={style.protein}>
         Prot:
         <span className={style.props}>
-          {product.nutritional_facts.protein} |
+           {product.nutritional_facts.protein} |
         </span>
       </p>
       <p className={style.fat}>
