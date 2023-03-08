@@ -4,14 +4,14 @@ import { escolherDieta } from "../Utils/Utils";
 export const Diet = ({ product }) => {
   return (
     <div className={style.standard}>
-      {product.label.map((Dieta, index) => {
+      {product.label.map((Dieta, index)=>{
         let img = escolherDieta(Dieta);
         return (
-          <div key={index + 100}>
-            {Dieta === "standard" ? null : (
+          <span className={style.diet} key={index}>
+            {Dieta==="standard"?null:(
               <img src={img} className={style.keto} />
             )}
-          </div>
+          </span>
         );
       })}
     </div>

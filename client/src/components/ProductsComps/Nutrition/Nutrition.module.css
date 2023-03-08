@@ -5,6 +5,7 @@
     {
       font-size: 1.3em;
       display: inline;
+      gap: 2em;
       width: fit-content;
       margin-bottom: 1em;
     }

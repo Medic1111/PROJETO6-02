@@ -1,9 +1,14 @@
 .standard {
-    display: flex;
-    align-items: center;
-  }
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
 
-  .keto {
-    width: 9%;
-  }
-  
+.keto {
+  width: 100%;
+}
+
+.diet {
+ width: 10%;
+
+}
