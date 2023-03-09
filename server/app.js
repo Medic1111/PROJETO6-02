@@ -5,9 +5,20 @@ const path = require("path");
 const { Product } = require("./models/products");
 const { User } = require("./models/user");
 const bcrypt = require("bcrypt");
+const rateLimit = require('express-rate-limit')
+const mongoSanitize = require("express-mongo-sanitize");
+const xss = require("xss-clean");
+const hpp = require("hpp");
+const helmet = require("helmet");
 require("dotenv").config();
 
 const app = express();
+
+const limiter =  rateLimit({
+  max: 100,
+  window: 60 * 60 * 1000,
+  message: "Too many requests from this IP, try again in an hour",
+});
 
 // MIDDLEWARE
 
@@ -15,6 +26,11 @@ app.use(morgan("dev"));
 app.use(express.json());
 app.use(cors({ origin: "*" }));
 app.use(express.static(path.resolve(__dirname, "../client/dist")));
+app.use(mongoSanitize())
+app.use(xss());
+app.use(hpp());
+app.use(helmet());
+app.use("/api/v1", limiter);
 
 app.get("/api/v1", (req, res) => {
   res.status(500).json({ message: "SENHA INCORRETA" });
