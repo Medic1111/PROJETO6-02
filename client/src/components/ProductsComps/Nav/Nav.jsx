@@ -1,5 +1,6 @@
 import style from "./Nav.module.css";
 
+
 export const Nav = ({ setUrl }) => {
   const irParaInicio = () => {
     setUrl("/api/v1/products");
@@ -38,8 +39,8 @@ export const Nav = ({ setUrl }) => {
         </li>
         <li onClick={irParaKeto} className={style.filtro}>
           Keto
-        </li>
-      </ul>
+        </li>      
+      </ul>                      
     </nav>
   );
 };

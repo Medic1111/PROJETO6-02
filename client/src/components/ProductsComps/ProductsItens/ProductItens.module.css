@@ -1,14 +1,14 @@
 .li {
   margin: 3em 0.75em;
   color: #474646;
-  box-shadow: rgb(174, 156, 156) 0px 15px 30px -10px;
+  box-shadow: #ae9c9c 0px 15px 30px -10px;
   border-radius: 8px;
   height: fit-content;
   list-style: none;
   display: flex;
   flex-direction: column;
   min-width: 26em;
-  height: 50vh;
+  height: 60vh;
   position: relative;
 }
 
