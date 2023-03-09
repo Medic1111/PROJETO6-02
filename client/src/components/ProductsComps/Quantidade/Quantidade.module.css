@@ -5,7 +5,7 @@
     position: absolute;
     bottom: 0px;
     left: 0;
-    padding: 1em 1.95em;
+    padding: 1em 1.99em;
   }
 
   .price {
@@ -40,8 +40,8 @@
   
   .button {
     align-self: self-end;
-    background-color: #ff0000;
-   font-weight: 500;
+    background-color: #a74242;
+    font-weight: 500;
     color: #ffffff;
     font-size: 1.2em;
     border-radius: 8px;
