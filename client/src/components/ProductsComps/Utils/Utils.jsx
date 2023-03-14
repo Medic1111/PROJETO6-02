@@ -12,10 +12,10 @@ export const breakpointColumnsObj = {
 export const escolherDieta = (Dieta) => {
     let img;
 	    if (Dieta==="paleo"){
-		    img=paleo
+		img=paleo
 			} 
 		else if (Dieta==="keto"){
-		    img=keto
+		img=keto
 		    }
 		else if (Dieta==="vegan"){
 		img=vegan

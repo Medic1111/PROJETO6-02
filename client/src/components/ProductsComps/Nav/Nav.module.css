@@ -1,24 +1,48 @@
 .nav {
-    width: 100%;
-  }
+  width: 100%;
+}
 
-  .filtro {
-    cursor: pointer;
-
-  }
-
-  .filtro:hover {
-    color: #ff0000; 
-    transition: 0.25s;
+.filtro {
+  cursor: pointer;
+  /* padding: 0.3em;
+  margin-bottom: 2em;
+  width: 9%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 0.75em;
+  border-radius: 0.45em;
+  background-color: #a74242;
+   */
   
+}
+
+.filtro:hover {
+  color: #b18686;
+  transition: 0.25s;
+}
+
+.route {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3em;
+  font-family: sans-serif;
+  font-size: 1.6em;
+  color: #937171;
+}
+
+
+@media (max-width: 620px) {
+  .nav {
+    gap: 0.75em;
+    width: unset;
   }
 
   .route {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 3em;
-    font-family: sans-serif;
-    font-size: 1.6em;
-    color: #757575;
+    gap: 1em;
+
   }
+
+  
+}

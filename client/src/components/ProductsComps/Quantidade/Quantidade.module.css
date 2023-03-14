@@ -5,25 +5,28 @@
     position: absolute;
     bottom: 0px;
     left: 0;
-    padding: 1em 1.95em;
+    padding: 1em 1.99em;
   }
 
   .price {
     color: #ffffff;
     text-transform: uppercase;
-    font-weight: 900;
+    font-family: sans-serif;
+    font-weight: 500;
   }
 
   .menos {
     font-family: sans-serif;
     color: #757575;
-    font-weight: 900;
+    font-weight: 500;
+    cursor: pointer;
   }
   
   .mais {
     color: #ff0000;
     font-family: sans-serif;
-    font-weight: 900;
+    font-weight: 500;
+    cursor: pointer;
   }
   
   .quantidade {
@@ -32,25 +35,24 @@
     gap: 1em;
     align-items: center;
     font-size: 1.8em;
-    font-weight: 900;
+    font-weight: 500;
   }
   
   .button {
     align-self: self-end;
-    background-color: #ff0000;
-    font-weight: bold;
+    background-color: #a74242;
+    font-weight: 500;
     color: #ffffff;
     font-size: 1.2em;
     border-radius: 8px;
     border: transparent;
     display: flex;
-    padding: 0 0.25em;
-    /* gap: 0.25em; */
+    padding: 0 0.5em;
+    cursor: pointer;
     align-items: center;
     justify-content: space-between;
     height: 5vh;
-    width: 10em;
-    max-width: 45%;
+    min-width: 45%;
   }
 
 /* Responsivo */
