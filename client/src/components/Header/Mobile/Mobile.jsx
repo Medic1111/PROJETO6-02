@@ -5,13 +5,14 @@ import React from "react";
 import { Container, Content, Menu } from "./styles";
 import { BiMenu } from "react-icons/bi";
 import { RxMagnifyingGlass } from "react-icons/rx";
-export function Mobile() {
+
+export function Mobile({ user = "" }) {
   return (
     <Container>
       <Content>
         <Menu>
           <BiMenu size={30} />
-          <span>Olá, Guest!</span>
+          <span>Olá, {user ? user : "Guest"}!</span>
         </Menu>
         <div>
           <RxMagnifyingGlass size={30} />
@@ -20,5 +21,3 @@ export function Mobile() {
     </Container>
   );
 }
-
-
