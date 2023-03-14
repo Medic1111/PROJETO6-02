@@ -29,8 +29,26 @@ app.use(express.static(path.resolve(__dirname, "../client/dist")));
 app.use(mongoSanitize())
 app.use(xss());
 app.use(hpp());
-app.use(helmet());
+app.use(helmet.dnsPrefetchControl());
+app.use(helmet.frameguard());
+app.use(helmet.hidePoweredBy());
+app.use(helmet.hsts());
+app.use(helmet.ieNoOpen());
+app.use(helmet.noSniff());
+app.use(helmet.originAgentCluster());
+app.use(helmet.permittedCrossDomainPolicies());
+app.use(helmet.referrerPolicy());
+app.use(helmet.xssFilter());
 app.use("/api/v1", limiter);
+
+app.use(
+  helmet.contentSecurityPolicy({
+       useDefaults: true,
+       directives: {
+         "img-src": ["'self'", "https: data:"]
+       }
+     })
+   )
 
 app.get("/api/v1", (req, res) => {
   res.status(500).json({ message: "SENHA INCORRETA" });
@@ -91,6 +109,25 @@ app.post("/api/v1/auth/register", async (req, res) => {
 
 app.get("*", (req, res) => {
   res.sendFile(path.resolve(__dirname, "../client/dist", "index.html"));
+});
+
+app.use((err, req, res, next) => {
+  console.log("Middleware error handling: ", err);
+
+ // Elaborate and address all possible errors here:
+
+  let statusCode = err.statusCode || 500;
+  let status = String(statusCode).startsWith("4") ? "Fail" : "Error";
+  let message = err.message || "Oops, something went wrong";
+
+  res.status(statusCode).json({ status, message });
+});
+
+app.get("/api/v1/error", (req, res, next) => {
+  next({
+    statusCode: 500,
+    message: "Oops, something went wrong",
+  });
 });
 
 module.exports = app;
