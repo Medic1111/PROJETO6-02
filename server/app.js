@@ -32,6 +32,34 @@ app.use(hpp());
 app.use(helmet());
 app.use("/api/v1", limiter);
 
+app.use((err, req, res, next) => {
+  console.log("Middleware error handling: ", err);
+
+ app.use(
+ helmet.contentSecurityPolicy({
+      useDefaults: true,
+      directives: {
+        "img-src": ["'self'", "https: data:"]
+      }
+    })
+  )
+
+  // Elaborate and address all possible errors here:
+
+  let statusCode = err.statusCode || 500;
+  let status = String(statusCode).startsWith("4") ? "Fail" : "Error";
+  let message = err.message || "Oops, something went wrong";
+
+  res.status(statusCode).json({ status, message });
+});
+
+app.get("/api/v1/error", (req, res, next) => {
+  next({
+    statusCode: 500,
+    message: "Oops, something went wrong",
+  });
+});
+
 app.get("/api/v1", (req, res) => {
   res.status(500).json({ message: "SENHA INCORRETA" });
 });
