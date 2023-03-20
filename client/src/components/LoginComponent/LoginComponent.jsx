@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { AuthContext, ProvideUser } from "../../contexts/users.jsx";
+import { useNavigate } from "react-router-dom";
 import {
   Container,
   Content,
@@ -25,6 +27,8 @@ const schema = yup
 
 //GL CODOU POR AQUI AQUI HAHA :)
 export function LoginComponent() {
+  const { username, setUsername } = useContext(AuthContext);
+  const navigate = useNavigate();
   const [statusMsg, setStatus] = useState(false);
   const [msg, setMsg] = useState("SUCESSO");
   const {
@@ -41,8 +45,12 @@ export function LoginComponent() {
       .then(({ data }) => {
         setStatus(true);
         setMsg("SUCESSO");
+        setUsername({ username });
         setTimeout(() => {
           setStatus(false);
+          setTimeout(() => {
+            navigate("/products");
+          }, 1000);
         }, 2000);
       })
       .catch((err) => {

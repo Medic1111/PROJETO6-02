@@ -5,14 +5,20 @@ import React from "react";
 import { Container, Desk, Mobol } from "./styles";
 import { Mobile } from "./Mobile/Mobile";
 import { Desktop } from "./Desktop/Desktop";
+import { useContext } from "react";
+import { AuthContext } from "../../contexts/users";
 export function Header() {
+  const {
+    username: { username },
+  } = useContext(AuthContext);
+
   return (
     <Container>
       <Desk>
-        <Desktop />
+        <Desktop user={username} />
       </Desk>
       <Mobol>
-        <Mobile />
+        <Mobile user={username} />
       </Mobol>
     </Container>
   );
