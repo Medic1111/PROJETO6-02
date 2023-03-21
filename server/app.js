@@ -2,14 +2,12 @@ const express = require("express");
 const morgan = require("morgan");
 const cors = require("cors");
 const path = require("path");
-const { Product } = require("./models/products");
-const { User } = require("./models/user");
-const bcrypt = require("bcrypt");
 const rateLimit = require('express-rate-limit')
 const mongoSanitize = require("express-mongo-sanitize");
 const xss = require("xss-clean");
 const hpp = require("hpp");
 const helmet = require("helmet");
+const router = require("./db/routes/routes");
 require("dotenv").config();
 
 const app = express();
@@ -50,66 +48,12 @@ app.use(
      })
    )
 
-app.get("/api/v1", (req, res) => {
-  res.status(500).json({ message: "SENHA INCORRETA" });
-});
-
-app.get("/api/v1/products", async (req, res) => {
-  if (req.query && req.query.label) {
-    const allProducts = await Product.find(req.query);
-    return res.status(200).json({ products: allProducts });
-  }
-  const allProducts = await Product.find();
-  res.status(200).json({ products: allProducts });
-});
-
-app.post("/api/v1/auth/login", async (req, res) => {
-  const { username, password } = req.body;
-  const user = await User.findOne({ username: username }).select("+password");
-
-  if (!user) {
-    return res.status(404).json({ message: "Usuario não existe" });
-  }
-
-  const decrypt = await bcrypt.compare(password, user.password)
-
-  if (!decrypt) {
-    return res.status(401).json({ message: "senha incorreta" });
-  }
-  user.password = "e agora?"
-
-  res.status(200).json({ user });
-});
-
-app.delete("/api/v1/auth/delete", async (req, res) => {
-  const { password, password_confirm, username } = req.body
-
-  if (password !== password_confirm) {
-    return res.status(401).json({ message: "senhas não são iguais" })
-  }
-
-  const user = await User.findOne({ username: username }).select("+password")
-
-  const decrypt = await bcrypt.compare(password, user.password)
-
-  if (!decrypt) {
-    return res.status(401).json({ message: "senha incorreta" })
-  }
-
-  await User.findOneAndDelete({username: username})
-  res.status(202).json({message: "conta deletada, eh us guri"})
-})
-
-app.post("/api/v1/auth/register", async (req, res) => {
-  const { password } = req.body;
-  const hash = await bcrypt.hash(password, 12)
-  const user = await User.create({ ...req.body, password: hash });
-  res.status(201).json(user);
-});
-
-app.get("*", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "../client/dist", "index.html"));
-});
+app.get("/api/v1", router)
+app.get("/api/v1/products", router )
+app.post("/api/v1/auth/login", router) 
+app.delete("/api/v1/auth/delete", router)
+app.post("/api/v1/auth/register", router)
+app.get("*", router)
 
 app.use((err, req, res, next) => {
   console.log("Middleware error handling: ", err);
@@ -123,11 +67,6 @@ app.use((err, req, res, next) => {
   res.status(statusCode).json({ status, message });
 });
 
-app.get("/api/v1/error", (req, res, next) => {
-  next({
-    statusCode: 500,
-    message: "Oops, something went wrong",
-  });
-});
+app.get("/api/v1/error", router)
 
 module.exports = app;
