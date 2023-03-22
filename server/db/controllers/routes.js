@@ -1,4 +1,5 @@
 const bcrypt = require("bcrypt");
+const path = require("path");
 const { User } = require("../../models/user");
 const { Product } = require("../../models/products");
 
