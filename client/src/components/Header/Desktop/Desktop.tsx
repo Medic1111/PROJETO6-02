@@ -6,7 +6,7 @@ import { Container, Content, Logo, Search, User } from "./styles";
 import { MdAccountCircle } from "react-icons/md";
 import { FaHamburger } from "react-icons/fa";
 
-export function Desktop(props) {
+export function Desktop({ user = "" }) {
   return (
     <Container>
       <Content>
@@ -21,7 +21,7 @@ export function Desktop(props) {
         </div>
         <User>
           <MdAccountCircle size={30} />
-          <span>Olá, Guest!</span>
+          <span>Olá, {user ? user : "Guest"}!</span>
         </User>
       </Content>
     </Container>
