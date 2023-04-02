@@ -1,11 +1,7 @@
 const bcrypt = require("bcrypt");
-const path = require("path");
-const { User } = require("../../models/user");
-const { Product } = require("../../models/products");
-
-const incorrectPassword = (req, res) => {
-  res.status(500).json({ message: "SENHA INCORRETA" });
-}
+const { User } = require("../models/user");
+const { Product } = require("../models/products");
+const sendEmail = require("../utils/send_email");
 
 const productsAPi = async (req, res) => {
   if (req.query && req.query.label) {
@@ -14,7 +10,7 @@ const productsAPi = async (req, res) => {
   }
   const allProducts = await Product.find();
   res.status(200).json({ products: allProducts });
-}
+};
 
 const userLogin = async (req, res) => {
   const { username, password } = req.body;
@@ -24,61 +20,61 @@ const userLogin = async (req, res) => {
     return res.status(404).json({ message: "Usuario não existe" });
   }
 
-  const decrypt = await bcrypt.compare(password, user.password)
+  const decrypt = await bcrypt.compare(password, user.password);
 
   if (!decrypt) {
     return res.status(401).json({ message: "senha incorreta" });
   }
-  user.password = "e agora?"
+  user.password = "e agora?";
 
   res.status(200).json({ user });
-}
+};
 
 const userDelete = async (req, res) => {
-  const { password, password_confirm, username } = req.body
+  const { password, password_confirm, username } = req.body;
 
   if (password !== password_confirm) {
-    return res.status(401).json({ message: "senhas não são iguais" })
+    return res.status(401).json({ message: "senhas não são iguais" });
   }
 
-  const user = await User.findOne({ username: username }).select("+password")
+  const user = await User.findOne({ username: username }).select("+password");
 
-  const decrypt = await bcrypt.compare(password, user.password)
+  const decrypt = await bcrypt.compare(password, user.password);
 
   if (!decrypt) {
-    return res.status(401).json({ message: "senha incorreta" })
+    return res.status(401).json({ message: "senha incorreta" });
   }
 
-  await User.findOneAndDelete({username: username})
-  res.status(202).json({message: "conta deletada"})
-}
+  await sendEmail({
+    email: user.email,
+    subject: "Que pena =(",
+    message: "Esperamos que retorne em breve",
+  });
+
+  await User.findOneAndDelete({ username: username });
+  res.status(202).json({ message: "conta deletada" });
+};
 
 const userRegister = async (req, res) => {
   const { password } = req.body;
-  const hash = await bcrypt.hash(password, 12)
+  const hash = await bcrypt.hash(password, 12);
   const user = await User.create({ ...req.body, password: hash });
+  await sendEmail({
+    email: user.email,
+    subject: "Bem vindo ao PedeAi",
+    message: "Obrigada por registrar conosco",
+  });
   res.status(201).json(user);
-}
+};
 
 const resClient = (req, res) => {
-  res.sendFile(
-    path.resolve(__dirname, "../../../client/dist", "index.html")
-  );
-}
-
-const err = (req, res, next) => {
-  next({
-    statusCode: 500,
-    message: "Oops, something went wrong",
-  });
-}
+  res.sendFile(path.resolve(__dirname, "../../../client/dist", "index.html"));
+};
 
 module.exports = {
-  incorrectPassword, 
   productsAPi,
   userLogin,
   userDelete,
   userRegister,
   resClient,
-  err
-}
+};
